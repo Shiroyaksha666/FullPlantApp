@@ -5,7 +5,6 @@ import 'package:full_plant_app/ui/cart/cart_page.dart';
 import 'package:full_plant_app/ui/catalog/catalaog_page.dart';
 import 'package:full_plant_app/ui/home/home_page.dart';
 import 'package:full_plant_app/ui/profile/profile_page.dart';
-import 'package:page_transition/page_transition.dart';
 
 class UnchangablePage extends StatefulWidget {
   const UnchangablePage({super.key});
