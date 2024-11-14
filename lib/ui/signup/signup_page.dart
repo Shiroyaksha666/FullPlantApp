@@ -3,6 +3,7 @@ import 'package:full_plant_app/api/api_service.dart';
 import 'package:full_plant_app/constants/constants.dart';
 import 'package:full_plant_app/models/woocommerce/register_model.dart';
 import 'package:full_plant_app/ui/signup/form_field.dart';
+import 'package:full_plant_app/utils/extensions.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -117,6 +118,8 @@ class _SignupPageState extends State<SignupPage> {
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return 'این فیلد باید تکمیل شود .';
+                              } else if (!value!.isValidEmail) {
+                                return 'ایمیل نامعتبر است.';
                               }
                               return null;
                             },
@@ -134,6 +137,8 @@ class _SignupPageState extends State<SignupPage> {
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return 'این فیلد باید تکمیل شود .';
+                              } else if (!value!.isValidPassword) {
+                                return 'پسورد ضعیف است.';
                               }
                               return null;
                             },
@@ -177,8 +182,8 @@ class _SignupPageState extends State<SignupPage> {
                                                 return AlertDialog(
                                                   title:
                                                       const Text('woocommerce'),
-                                                  content:
-                                                      const Text('succesfull'),
+                                                  content: const Text(
+                                                      'Registeration Successful'),
                                                   actions: [
                                                     TextButton(
                                                         onPressed: () {
