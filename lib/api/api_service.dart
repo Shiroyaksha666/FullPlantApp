@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:full_plant_app/constants/constants.dart';
 import 'package:full_plant_app/models/woocommerce/register_model.dart';
 
@@ -29,7 +28,6 @@ class ApiService {
         returnResponse = true;
       }
     } on DioException catch (e) {
-      debugPrint('$e');
       if (e.response?.statusCode == 404) {
         returnResponse = false;
       } else {

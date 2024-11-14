@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:full_plant_app/api/api_service.dart';
 import 'package:full_plant_app/constants/constants.dart';
 import 'package:full_plant_app/models/woocommerce/register_model.dart';
+import 'package:full_plant_app/ui/signup/form_field.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -13,6 +14,7 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   late ApiService apiService;
   late CustomerModel customerModel;
+  GlobalKey<FormState> globalKey = GlobalKey<FormState>();
   bool isApiCalled = false;
 
   @override
@@ -70,231 +72,193 @@ class _SignupPageState extends State<SignupPage> {
               child: SizedBox(
                 height: size.height * 0.8,
                 width: size.width * 0.8,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: TextFormField(
-                            initialValue: customerModel.firstName,
-                            onChanged: (value) {
+                child: Form(
+                  key: globalKey,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          CustomFormField(
+                            validator: (value) {
+                              if (value.toString().isEmpty) {
+                                return 'این فیلد باید تکمیل شود .';
+                              }
+                              return null;
+                            },
+                            initialvalue: customerModel.firstName,
+                            onchange: (value) {
                               customerModel.firstName = value;
                             },
-                            keyboardType: TextInputType.name,
-                            style: const TextStyle(fontSize: 20, height: 2),
-                            cursorColor: Consts.primaryColor,
                             textDirection: TextDirection.rtl,
-                            decoration: InputDecoration(
-                              labelText: 'نام',
-                              labelStyle: TextStyle(
-                                  color: Consts.primaryColor,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                              contentPadding: const EdgeInsets.all(15),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Consts.primaryColor,
-                                  width: 2,
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                            labelname: 'نام',
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: TextFormField(
-                            initialValue: customerModel.lastName,
-                            onChanged: (value) {
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          CustomFormField(
+                            validator: (value) {
+                              if (value.toString().isEmpty) {
+                                return 'این فیلد باید تکمیل شود .';
+                              }
+                              return null;
+                            },
+                            initialvalue: customerModel.lastName,
+                            onchange: (value) {
                               customerModel.lastName = value;
                             },
-                            keyboardType: TextInputType.name,
-                            style: const TextStyle(fontSize: 20, height: 2),
-                            cursorColor: Consts.primaryColor,
                             textDirection: TextDirection.rtl,
-                            decoration: InputDecoration(
-                              labelText: 'نام خانوادگی',
-                              labelStyle: TextStyle(
-                                  color: Consts.primaryColor,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                              contentPadding: const EdgeInsets.all(15),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Consts.primaryColor,
-                                  width: 2,
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                            labelname: 'نام خانوادگی',
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: TextFormField(
-                            initialValue: customerModel.email,
-                            onChanged: (value) {
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          CustomFormField(
+                            validator: (value) {
+                              if (value.toString().isEmpty) {
+                                return 'این فیلد باید تکمیل شود .';
+                              }
+                              return null;
+                            },
+                            initialvalue: customerModel.email,
+                            onchange: (value) {
                               customerModel.email = value;
                             },
-                            keyboardType: TextInputType.emailAddress,
-                            style: const TextStyle(fontSize: 20, height: 2),
-                            cursorColor: Consts.primaryColor,
                             textDirection: TextDirection.ltr,
-                            decoration: InputDecoration(
-                              labelText: 'ایمیل',
-                              labelStyle: TextStyle(
-                                  color: Consts.primaryColor,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                              contentPadding: const EdgeInsets.all(15),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Consts.primaryColor,
-                                  width: 2,
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                            labelname: 'ایمیل',
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: TextFormField(
-                            initialValue: customerModel.password,
-                            onChanged: (value) {
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          CustomFormField(
+                            validator: (value) {
+                              if (value.toString().isEmpty) {
+                                return 'این فیلد باید تکمیل شود .';
+                              }
+                              return null;
+                            },
+                            initialvalue: customerModel.password,
+                            onchange: (value) {
                               customerModel.password = value;
                             },
-                            obscureText: true,
-                            keyboardType: TextInputType.visiblePassword,
-                            style: const TextStyle(fontSize: 20, height: 2),
-                            cursorColor: Consts.primaryColor,
                             textDirection: TextDirection.ltr,
-                            decoration: InputDecoration(
-                              labelText: 'پسورد',
-                              labelStyle: TextStyle(
-                                  color: Consts.primaryColor,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                              contentPadding: const EdgeInsets.all(15),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Consts.primaryColor,
-                                  width: 2,
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                            labelname: 'پسورد',
+                            obscure: true,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          children: <Widget>[
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Consts.primaryColor,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                  vertical: 12,
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            children: <Widget>[
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Consts.primaryColor,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20,
+                                    vertical: 12,
+                                  ),
                                 ),
-                              ),
-                              onPressed: () {
-                                apiService
-                                    .createCustomer(customerModel)
-                                    .then((retRes) {
-                                  if (retRes) {
-                                    if (context.mounted) {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return AlertDialog(
-                                              title: const Text('woocommerce'),
-                                              content: const Text('succesfull'),
-                                              actions: [
-                                                TextButton(
-                                                    onPressed: () {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    },
-                                                    child: const Text('ok'))
-                                              ],
-                                            );
-                                          });
-                                    }
-                                  } else {
-                                    if (context.mounted) {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return AlertDialog(
-                                              title: const Text('woocommerce'),
-                                              content:
-                                                  const Text('not successfull'),
-                                              actions: [
-                                                TextButton(
-                                                    onPressed: () {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    },
-                                                    child: const Text('ok'))
-                                              ],
-                                            );
-                                          });
-                                    }
+                                onPressed: () {
+                                  if (globalKey.currentState!.validate()) {
+                                    setState(() {
+                                      isApiCalled = true;
+                                    });
+                                    apiService
+                                        .createCustomer(customerModel)
+                                        .then((retRes) {
+                                      setState(() {
+                                        isApiCalled = false;
+                                      });
+                                      if (retRes) {
+                                        if (context.mounted) {
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  title:
+                                                      const Text('woocommerce'),
+                                                  content:
+                                                      const Text('succesfull'),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        child: const Text('ok'))
+                                                  ],
+                                                );
+                                              });
+                                        }
+                                      } else {
+                                        if (context.mounted) {
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  title:
+                                                      const Text('woocommerce'),
+                                                  content: const Text(
+                                                      'Email Already Registered.'),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        child: const Text('ok'))
+                                                  ],
+                                                );
+                                              });
+                                        }
+                                      }
+                                    });
                                   }
-                                });
-                              },
-                              child: const Text(
-                                'ثبت نام',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
+                                },
+                                child: const Text(
+                                  'ثبت نام',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Consts.primaryColor,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 30,
-                                  vertical: 12,
-                                ),
+                              const SizedBox(
+                                width: 20,
                               ),
-                              onPressed: () {},
-                              child: const Text(
-                                'قبلا اکانت ساختی؟',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Consts.primaryColor,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 30,
+                                    vertical: 12,
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
+                                onPressed: () {},
+                                child: const Text(
+                                  'قبلا اکانت ساختی؟',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          isApiCalled
+                              ? const Text(
+                                  'لطفا منتظر بمانید...',
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              : const Text(''),
+                        ],
+                      ),
                     ),
                   ),
                 ),
