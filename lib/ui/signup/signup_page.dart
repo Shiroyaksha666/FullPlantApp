@@ -3,6 +3,7 @@ import 'package:full_plant_app/api/api_service.dart';
 import 'package:full_plant_app/constants/constants.dart';
 import 'package:full_plant_app/models/woocommerce/register_model.dart';
 import 'package:full_plant_app/ui/signup/form_field.dart';
+import 'package:full_plant_app/utils/custom_diaolog_box.dart';
 import 'package:full_plant_app/utils/extensions.dart';
 
 class SignupPage extends StatefulWidget {
@@ -176,45 +177,27 @@ class _SignupPageState extends State<SignupPage> {
                                       });
                                       if (retRes) {
                                         if (context.mounted) {
-                                          showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return AlertDialog(
-                                                  title:
-                                                      const Text('woocommerce'),
-                                                  content: const Text(
-                                                      'Registeration Successful'),
-                                                  actions: [
-                                                    TextButton(
-                                                        onPressed: () {
-                                                          Navigator.of(context)
-                                                              .pop();
-                                                        },
-                                                        child: const Text('ok'))
-                                                  ],
-                                                );
-                                              });
+                                          CustomDiaolog.showmessage(
+                                            context,
+                                            'ثبت نام موفق',
+                                            'ثبت نام شما با موفقیت انجام شد .',
+                                            'بستن',
+                                            () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          );
                                         }
                                       } else {
                                         if (context.mounted) {
-                                          showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return AlertDialog(
-                                                  title:
-                                                      const Text('woocommerce'),
-                                                  content: const Text(
-                                                      'Email Already Registered.'),
-                                                  actions: [
-                                                    TextButton(
-                                                        onPressed: () {
-                                                          Navigator.of(context)
-                                                              .pop();
-                                                        },
-                                                        child: const Text('ok'))
-                                                  ],
-                                                );
-                                              });
+                                          CustomDiaolog.showmessage(
+                                            context,
+                                            'ثبت نام موفق',
+                                            'ثبت نام شما با موفقیت انجام شد .', // this must be edited.
+                                            'بستن',
+                                            () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          );
                                         }
                                       }
                                     });
