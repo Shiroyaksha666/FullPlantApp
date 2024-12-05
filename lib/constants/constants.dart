@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class WoocommerceInfo {
   //ConsumerKey and ConsumerSecret
 
-  static String consumerKey = "ck_840b89b311e8d00aed90a27a2fcd99e332ddda95";
-  static String consumerSecret = "cs_b0191c19bac02f398cda9a8f8ee7956b6efe5587";
+  static String consumerKey = "ck_3e28380ab501b45977c2aa118e7d440b167118c3";
+  static String consumerSecret = "cs_2981e2a3fb65d2c707e927e12293473cc65b019e";
 
   //Base URL
-  static String mainUrl = "https://plantapp.s475.site/wp-json/wc/v3/";
+  static String mainUrl = "https://planta.s474.site/wp-json/wc/v3/";
+  //JWT Auth
+  static String tokenUrl = "https://planta.s474.site/wp-json/jwt-auth/v1/token";
 
   //Endpoint URL
 

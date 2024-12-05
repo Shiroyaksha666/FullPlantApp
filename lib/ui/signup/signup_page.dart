@@ -191,8 +191,8 @@ class _SignupPageState extends State<SignupPage> {
                                         if (context.mounted) {
                                           CustomDiaolog.showmessage(
                                             context,
-                                            'ثبت نام موفق',
-                                            'ثبت نام شما با موفقیت انجام شد .', // this must be edited.
+                                            'ثبت نام ناموفق',
+                                            'ایمیلی که استفاده کردید تکراری است.', // this must be edited.
                                             'بستن',
                                             () {
                                               Navigator.of(context).pop();
